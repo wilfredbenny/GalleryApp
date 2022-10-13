@@ -1,0 +1,31 @@
+<app-navigation-bar></app-navigation-bar>
+<div class="content">
+  <button (click)="add()" class="add btn btn-primary">Add Images</button><br />
+  <div class="row">
+    <div [ngClass]="isTrue ? 'col-8' : 'col'">
+      <div class="image--basic">
+        <a class="a" href="#{{img.name}}" *ngFor="let img of img_array;let i=index"
+          (click)="img_event(img.url,img.name)">
+          <figure>
+            <img id="expand-jump-{{i+1}}" class="basic__img " src="{{img.url}}">
+          </figure>
+          <span><label style="color: black; font-size:10pt">{{img.name | slice:25:39}}...</label></span>
+        </a>
+      </div>
+    </div>
+<!-- //sidebar -->
+    <div *ngIf="isTrue" class="col-4 image_display" style="background: black; color: white;">
+      <div>
+        <button class="close_btn btn" (click)="close()">X</button>
+        <a href="{{urlVal}}">
+          <img src="{{urlVal}}"
+            style="width:90%;height:auto;margin:20px;padding-top: 60px;background-color: black;"></a>
+        <div class="row">
+          <h6>{{urlName}}</h6>
+        </div>
+      </div>
+      <a href="{{urlVal}}" class="btn" class="btn btn_visit">Visit</a>
+      <hr style="margin-top:45px">
+    </div>
+  </div>
+</div>
